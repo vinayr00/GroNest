@@ -80,12 +80,17 @@ app.post("/api/login", (req, res) => {
 
 // DB completely disconnected as requested
 
-app.get("/", (req, res) => {
-  res.send("Gronest Backend Running 🚀");
-});
+// Serve static files from the React frontend build
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.get("/api/test", (req, res) => {
   res.json({ message: "Backend is connected successfully 🎉" });
 });
 
-app.listen(5000, () => console.log("Server running on port 5000"));
+// Catch-all route to serve React app for any unhandled paths (supports React Router)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
