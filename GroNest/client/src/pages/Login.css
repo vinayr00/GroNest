@@ -117,12 +117,32 @@
   border-color:#27ae60;
   box-shadow:0 0 5px rgba(39,174,96,0.3);
 }
-.login-box a{
-  color:#27ae60;
-  text-decoration:none;
-  font-weight:500;
+.login-box a {
+  color: #27ae60;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-.login-box a:hover{
-  text-decoration:underline;
+.login-box a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .login-page {
+    height: auto;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .login-container {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+  .login-image {
+    padding: 40px 20px;
+  }
+  .login-box {
+    padding: 30px 20px;
+  }
 }

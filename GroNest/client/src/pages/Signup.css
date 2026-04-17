@@ -161,3 +161,23 @@
   color: #1e874b;
   text-decoration: underline;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .signup-page {
+    height: auto;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .signup-container {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+  .signup-image {
+    padding: 40px 20px;
+  }
+  .signup-box {
+    padding: 30px 20px;
+  }
+}
