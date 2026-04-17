@@ -15,6 +15,9 @@ function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const [editForm, setEditForm] = useState({ name: "", email: "" });
 
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
+  const [passwordForm, setPasswordForm] = useState({ current: "", new: "" });
+
   const [activeUser, setActiveUser] = useState(user);
 
   // Generate avatar initials from name or email
@@ -56,6 +59,22 @@ function Profile() {
     localStorage.setItem("gronest_users", JSON.stringify(updatedUsers));
 
     setIsEditing(false);
+  };
+
+  const handleChangePassword = () => {
+    const allUsers = JSON.parse(localStorage.getItem("gronest_users") || "[]");
+    const fullUser = allUsers.find(u => u._id === activeUser._id);
+    
+    if (!fullUser) return alert("User error. Please log in again.");
+    if (fullUser.password !== passwordForm.current) return alert("Incorrect current password.");
+    if (!passwordForm.new || passwordForm.new.length < 3) return alert("New password is too short.");
+
+    fullUser.password = passwordForm.new;
+    localStorage.setItem("gronest_users", JSON.stringify(allUsers));
+    
+    alert("Password updated successfully! ✅");
+    setIsChangingPassword(false);
+    setPasswordForm({ current: "", new: "" });
   };
 
   const stats = [
@@ -171,6 +190,41 @@ function Profile() {
               <span className="detail-key">Total Spent</span>
               <span className="detail-val">₹{totalSpent}</span>
             </div>
+            
+            {isChangingPassword ? (
+              <div className="detail-row" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '10px', background: '#f9f9f9', padding: '15px', borderRadius: '10px', marginTop: '15px' }}>
+                <span className="detail-key">Change Password</span>
+                <input 
+                  type="password" 
+                  placeholder="Current Password" 
+                  value={passwordForm.current} 
+                  onChange={e => setPasswordForm({...passwordForm, current: e.target.value})} 
+                  style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ddd', outline: 'none' }}
+                />
+                <input 
+                  type="password" 
+                  placeholder="New Password" 
+                  value={passwordForm.new} 
+                  onChange={e => setPasswordForm({...passwordForm, new: e.target.value})} 
+                  style={{ width: '100%', padding: '8px', borderRadius: '5px', border: '1px solid #ddd', outline: 'none' }}
+                />
+                <div style={{ display: 'flex', gap: '10px', width: '100%', marginTop: '5px' }}>
+                  <button onClick={handleChangePassword} style={{ flex: 1, background: '#27ae60', color: 'white', padding: '8px', borderRadius: '5px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Save</button>
+                  <button onClick={() => setIsChangingPassword(false)} style={{ flex: 1, background: '#eee', color: '#555', padding: '8px', borderRadius: '5px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Cancel</button>
+                </div>
+              </div>
+            ) : (
+              <div className="detail-row">
+                <span className="detail-key">Password</span>
+                <button 
+                  onClick={() => setIsChangingPassword(true)} 
+                  style={{ background: 'transparent', color: '#27ae60', border: '1px solid #27ae60', padding: '4px 12px', borderRadius: '20px', cursor: 'pointer', fontWeight: '600' }}
+                >
+                  Change Password
+                </button>
+              </div>
+            )}
+
           </div>
         </div>
 
