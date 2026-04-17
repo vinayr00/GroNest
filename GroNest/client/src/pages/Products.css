@@ -39,6 +39,12 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 36px;
+  /* Scrollbar hider for mobile */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.products-filters::-webkit-scrollbar {
+  display: none;
 }
 .filter-chip {
   border: 2px solid #d5e8d5;
@@ -52,6 +58,7 @@
   font-family: 'Inter', sans-serif;
   transition: all 0.22s ease;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  flex-shrink: 0; /* Prevents squishing on mobile */
 }
 .filter-chip:hover {
   transform: translateY(-2px);
@@ -144,4 +151,13 @@
 @media (max-width: 640px) {
   .products-page { padding: 24px 14px 40px; }
   .products-grid { grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); gap: 14px; }
+  
+  /* Horizontal scroll for filters on mobile */
+  .products-filters {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    -webkit-overflow-scrolling: touch;
+  }
 }
