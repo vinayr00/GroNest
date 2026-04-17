@@ -40,48 +40,68 @@ function Signup() {
   };
 
   return (
+    <div className="signup-page">
+      <div className="signup-container">
 
-    <div className="signup-container">
+        {/* RIGHT SIDE (Image) */}
+        <div className="signup-image">
+          <h1>GroNest</h1>
+          <p>Join the nest and get fresh groceries delivered instantly to your door.</p>
+        </div>
 
-      <form className="signup-form" onSubmit={handleSubmit}>
+        {/* LEFT SIDE (Form) */}
+        <div className="signup-box">
+          <h2>Create Account</h2>
 
-        <h2>Create Account</h2>
+          <form onSubmit={handleSubmit}>
 
-        <input
-          type="text"
-          placeholder="Full Name"
-          required
-          onChange={(e)=>setData({...data,name:e.target.value})}
-        />
+            <div className="input-group">
+              <input
+                type="text"
+                placeholder=" "
+                required
+                onChange={(e) => setData({ ...data, name: e.target.value })}
+              />
+              <label>Full Name</label>
+            </div>
 
-        <input
-          type="email"
-          placeholder="Email"
-          required
-          onChange={(e)=>setData({...data,email:e.target.value})}
-        />
+            <div className="input-group">
+              <input
+                type="email"
+                placeholder=" "
+                required
+                onChange={(e) => setData({ ...data, email: e.target.value })}
+              />
+              <label>Email</label>
+            </div>
 
-        <input
-          type={showPassword ? "text" : "password"}
-          placeholder="Password"
-          required
-          onChange={(e)=>setData({...data,password:e.target.value})}
-        />
+            <div className="input-group">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder=" "
+                required
+                onChange={(e) => setData({ ...data, password: e.target.value })}
+              />
+              <label>Password</label>
+              <span className="toggle" onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? "🙈" : "👁"}
+              </span>
+            </div>
 
-        <label className="show-password">
-          <input
-            type="checkbox"
-            onChange={() => setShowPassword(!showPassword)}
-          />
-          Show Password
-        </label>
+            <button type="submit">Sign Up</button>
 
-        <button>Create Account</button>
+            <p>
+              Already have an account?{" "}
+              <span onClick={() => navigate("/login")}>
+                Login
+              </span>
+            </p>
 
-      </form>
+          </form>
+        </div>
 
+      </div>
     </div>
-
   );
 }
 

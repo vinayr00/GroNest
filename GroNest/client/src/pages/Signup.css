@@ -1,48 +1,163 @@
-.signup-container{
-height:80vh;
-display:flex;
-justify-content:center;
-align-items:center;
+.signup-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #3a7bd5, #00c9a7); /* Inverted gradient to look distinct from login */
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.signup-form{
-background:white;
-padding:40px;
-border-radius:12px;
-box-shadow:0 4px 12px rgba(0,0,0,0.1);
-width:350px;
-display:flex;
-flex-direction:column;
-gap:15px;
+.signup-container {
+  display: flex;
+  width: 800px;
+  height: 500px;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  flex-direction: row-reverse; /* Reverses the layout so image is on right, form is on left */
 }
 
-.signup-form h2{
-text-align:center;
+/* Right Side (Image Side) */
+.signup-image {
+  flex: 1;
+  background: linear-gradient(135deg, #1e874b, #27ae60);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
 }
 
-.signup-form input{
-padding:10px;
-border:1px solid #ccc;
-border-radius:6px;
-font-size:14px;
+.signup-image h1 {
+  font-size: 38px;
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
-.signup-form button{
-padding:12px;
-border:none;
-background:#2e7d32;
-color:white;
-border-radius:8px;
-font-size:15px;
-cursor:pointer;
+.signup-image p {
+  font-size: 16px;
+  line-height: 1.5;
+  opacity: 0.9;
 }
 
-.signup-form button:hover{
-background:#256428;
+/* Left Side (Form Side) */
+.signup-box {
+  flex: 1.2;
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.show-password{
-font-size:14px;
-display:flex;
-align-items:center;
-gap:5px;
+
+.signup-box h2 {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 28px;
+}
+
+/* Floating Inputs */
+.input-group {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  transition: all 0.3s;
+  background: #fdfdfd;
+}
+
+.input-group label {
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  background: transparent;
+  padding: 0 4px;
+  color: #888;
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -9px;
+  left: 10px;
+  font-size: 12px;
+  color: #27ae60;
+  background: white;
+}
+
+.input-group input:focus {
+  border-color: #27ae60;
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+  background: white;
+}
+
+/* Show Password Toggle */
+.toggle {
+  position: absolute;
+  right: 12px;
+  top: 14px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 18px;
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+.toggle:hover {
+  opacity: 1;
+}
+
+/* Button */
+.signup-box button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #27ae60;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2);
+}
+
+.signup-box button:hover {
+  background: #1e874b;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(39, 174, 96, 0.3);
+}
+
+.signup-box button:active {
+  transform: translateY(1px);
+}
+
+.signup-box p {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+}
+
+.signup-box span {
+  color: #27ae60;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.signup-box span:hover {
+  color: #1e874b;
+  text-decoration: underline;
 }
