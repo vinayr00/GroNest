@@ -18,25 +18,22 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-      
-      const result = await response.json();
-
-      if (response.ok) {
-        // Log the user in immediately after successful signup
-        localStorage.setItem("user", JSON.stringify(result.user));
-        showToast("Account Created Successfully 🎉");
-        navigate("/");
-      } else {
-        alert(result.error || "Signup failed");
+      const users = JSON.parse(localStorage.getItem("gronest_users") || "[]");
+      if (users.find(u => u.email === data.email)) {
+        return alert("User already exists");
       }
+      
+      const newUser = { email: data.email, password: data.password, _id: Date.now().toString() };
+      users.push(newUser);
+      localStorage.setItem("gronest_users", JSON.stringify(users));
+
+      // Log the user in immediately after successful signup
+      localStorage.setItem("user", JSON.stringify({ email: newUser.email, _id: newUser._id }));
+      showToast("Account Created Successfully 🎉");
+      navigate("/");
     } catch (err) {
       console.error("Signup error:", err);
-      alert("Cannot connect to server for signup.");
+      alert("Error creating account.");
     }
   };
 

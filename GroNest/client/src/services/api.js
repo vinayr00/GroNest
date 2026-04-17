@@ -1,8 +1,8 @@
+import productsData from "../data/products.json";
+
 export async function fetchProducts() {
   try {
-    const res = await fetch("/api/products");
-    if (!res.ok) throw new Error('API error');
-    const data = await res.json();
+    const data = productsData;
     // Normalize image URLs: ensure local filenames become /assets/products/paths
     const normalized = data.map((p) => {
       const img = p.image || '';
@@ -14,7 +14,7 @@ export async function fetchProducts() {
     });
     return normalized;
   } catch (err) {
-    const mod = await import('../data/products.json');
-    return mod.default ?? mod;
+    console.error("Failed to load products data", err);
+    return [];
   }
 }

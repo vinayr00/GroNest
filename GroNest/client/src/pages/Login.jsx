@@ -23,21 +23,18 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-      if (response.ok) {
-        localStorage.setItem("user", JSON.stringify(result.user));
+      const users = JSON.parse(localStorage.getItem("gronest_users") || "[]");
+      const user = users.find(u => u.email === data.email && u.password === data.password);
+      
+      if (user) {
+        localStorage.setItem("user", JSON.stringify({ email: user.email, _id: user._id }));
         navigate("/home");
       } else {
-        alert(result.error || "Invalid Credentials");
+        alert("Invalid Credentials");
       }
     } catch (err) {
       console.error("Login error:", err);
-      alert("Cannot connect to server for login.");
+      alert("Error logging in.");
     }
   };
 
