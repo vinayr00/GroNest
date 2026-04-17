@@ -27,7 +27,7 @@ function Login() {
       const user = users.find(u => u.email === data.email && u.password === data.password);
       
       if (user) {
-        localStorage.setItem("user", JSON.stringify({ email: user.email, _id: user._id }));
+        localStorage.setItem("user", JSON.stringify({ name: user.name || user.email.split("@")[0], email: user.email, _id: user._id }));
         navigate("/home");
       } else {
         alert("Invalid Credentials");

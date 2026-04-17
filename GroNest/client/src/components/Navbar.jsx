@@ -40,7 +40,7 @@ function Navbar() {
   };
 
   // Avatar initials
-  const initials = user?.email ? user.email.slice(0, 2).toUpperCase() : "GN";
+  const initials = user?.name ? user.name.slice(0, 2).toUpperCase() : (user?.email ? user.email.slice(0, 2).toUpperCase() : "GN");
 
   return (
     <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
@@ -88,7 +88,7 @@ function Navbar() {
                 <div className="dropdown-header">
                   <span className="dropdown-avatar">{initials}</span>
                   <div>
-                    <p className="dropdown-name">@{user.email.split("@")[0]}</p>
+                    <p className="dropdown-name">{user.name || user.email.split("@")[0]}</p>
                     <p className="dropdown-email">{user.email}</p>
                   </div>
                 </div>

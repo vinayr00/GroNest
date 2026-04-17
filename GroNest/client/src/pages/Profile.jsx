@@ -1,6 +1,6 @@
 import "./Profile.css";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 
 function Profile() {
@@ -12,13 +12,51 @@ function Profile() {
   const totalSpent = orders.reduce((sum, o) => sum + (o.total || 0), 0);
   const cartItems = cart.reduce((sum, i) => sum + i.quantity, 0);
 
-  // Generate avatar initials from email
-  const initials = user.email
-    ? user.email.slice(0, 2).toUpperCase()
-    : "GN";
+  const [isEditing, setIsEditing] = useState(false);
+  const [editForm, setEditForm] = useState({ name: "", email: "" });
 
-  // Derive username from email
-  const username = user.email ? user.email.split("@")[0] : "Guest";
+  const [activeUser, setActiveUser] = useState(user);
+
+  // Generate avatar initials from name or email
+  const initials = activeUser.name
+    ? activeUser.name.slice(0, 2).toUpperCase()
+    : activeUser.email
+      ? activeUser.email.slice(0, 2).toUpperCase()
+      : "GN";
+
+  // Derive username from name or email
+  const username = activeUser.name || (activeUser.email ? activeUser.email.split("@")[0] : "Guest");
+
+  const handleEditToggle = () => {
+    if (isEditing) {
+      // Cancel edit
+      setIsEditing(false);
+    } else {
+      // Start edit
+      setEditForm({
+        name: activeUser.name || "",
+        email: activeUser.email || ""
+      });
+      setIsEditing(true);
+    }
+  };
+
+  const handleSave = () => {
+    if (!editForm.name || !editForm.email) return alert("Fields cannot be empty.");
+
+    const updatedUser = { ...activeUser, name: editForm.name, email: editForm.email };
+    
+    // Update active session
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+    setActiveUser(updatedUser);
+
+    // Update main users list so future logins work
+    const allUsers = JSON.parse(localStorage.getItem("gronest_users") || "[]");
+    const updatedUsers = allUsers.map(u => u._id === activeUser._id ? { ...u, ...updatedUser } : u);
+    localStorage.setItem("gronest_users", JSON.stringify(updatedUsers));
+
+    setIsEditing(false);
+  };
 
   const stats = [
     { icon: "📦", label: "Total Orders", value: orders.length },
@@ -55,9 +93,42 @@ function Profile() {
           </div>
 
           <div className="profile-info">
-            <h2 className="profile-name">@{username}</h2>
-            <p className="profile-email">📧 {user.email}</p>
-            <span className="profile-badge">✅ Active Member</span>
+            <h2 className="profile-name">
+              {isEditing ? (
+                <input 
+                  type="text" 
+                  value={editForm.name} 
+                  onChange={(e) => setEditForm({...editForm, name: e.target.value})} 
+                  autoFocus
+                  style={{ background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.4)', color: '#fff', padding: '4px 8px', borderRadius: '4px', outline: 'none' }}
+                />
+              ) : (
+                `@${username}`
+              )}
+            </h2>
+            <p className="profile-email">
+              {isEditing ? (
+                <input 
+                  type="email" 
+                  value={editForm.email} 
+                  onChange={(e) => setEditForm({...editForm, email: e.target.value})}
+                  style={{ background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.4)', color: '#fff', padding: '4px 8px', borderRadius: '4px', outline: 'none', marginLeft: '5px' }}
+                />
+              ) : (
+                `📧 ${activeUser.email}`
+              )}
+            </p>
+            <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+              <span className="profile-badge">✅ Active Member</span>
+              {isEditing ? (
+                <>
+                  <button onClick={handleSave} style={{ background: '#fff', color: '#27ae60', border: 'none', padding: '4px 12px', borderRadius: '20px', cursor: 'pointer', fontWeight: 'bold' }}>Save</button>
+                  <button onClick={handleEditToggle} style={{ background: 'transparent', color: '#fff', border: '1px solid #fff', padding: '4px 12px', borderRadius: '20px', cursor: 'pointer' }}>Cancel</button>
+                </>
+              ) : (
+                <button onClick={handleEditToggle} style={{ background: 'rgba(255,255,255,0.2)', color: '#fff', border: 'none', padding: '4px 12px', borderRadius: '20px', cursor: 'pointer' }}>✏️ Edit</button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -78,11 +149,11 @@ function Profile() {
           <div className="details-grid">
             <div className="detail-row">
               <span className="detail-key">Email</span>
-              <span className="detail-val">{user.email}</span>
+              <span className="detail-val">{activeUser.email}</span>
             </div>
             <div className="detail-row">
-              <span className="detail-key">Username</span>
-              <span className="detail-val">@{username}</span>
+              <span className="detail-key">Full Name</span>
+              <span className="detail-val">{activeUser.name || username}</span>
             </div>
             <div className="detail-row">
               <span className="detail-key">Member Since</span>

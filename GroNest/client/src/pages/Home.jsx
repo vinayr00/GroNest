@@ -8,7 +8,7 @@ function Home() {
   const { cart } = useContext(CartContext);
 
   const user = JSON.parse(localStorage.getItem("user"));
-  const username = user?.email ? user.email.split("@")[0] : "there";
+  const username = user?.name || (user?.email ? user.email.split("@")[0] : "there");
 
   const featuredGroups = [
     { title: "Daily Essentials", image: "/assets/categories/daily_essentials.jpg", key: "daily-essentials", emoji: "🥛", desc: "Milk, bread, rice & more" },

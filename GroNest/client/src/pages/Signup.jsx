@@ -10,6 +10,7 @@ function Signup() {
   const [showPassword, setShowPassword] = useState(false);
 
   const [data, setData] = useState({
+    name: "",
     email: "",
     password: ""
   });
@@ -23,12 +24,13 @@ function Signup() {
         return alert("User already exists");
       }
       
-      const newUser = { email: data.email, password: data.password, _id: Date.now().toString() };
+      const ObjectName = data.name || data.email.split("@")[0];
+      const newUser = { name: ObjectName, email: data.email, password: data.password, _id: Date.now().toString() };
       users.push(newUser);
       localStorage.setItem("gronest_users", JSON.stringify(users));
 
       // Log the user in immediately after successful signup
-      localStorage.setItem("user", JSON.stringify({ email: newUser.email, _id: newUser._id }));
+      localStorage.setItem("user", JSON.stringify({ name: ObjectName, email: newUser.email, _id: newUser._id }));
       showToast("Account Created Successfully 🎉");
       navigate("/");
     } catch (err) {
@@ -44,6 +46,13 @@ function Signup() {
       <form className="signup-form" onSubmit={handleSubmit}>
 
         <h2>Create Account</h2>
+
+        <input
+          type="text"
+          placeholder="Full Name"
+          required
+          onChange={(e)=>setData({...data,name:e.target.value})}
+        />
 
         <input
           type="email"
