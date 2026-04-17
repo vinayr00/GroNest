@@ -88,7 +88,7 @@ app.get("/api/test", (req, res) => {
 });
 
 // Catch-all route to serve React app for any unhandled paths (supports React Router)
-app.get("*", (req, res) => {
+app.get("(.*)", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
