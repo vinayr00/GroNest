@@ -126,16 +126,7 @@ function Profile() {
               )}
             </h2>
             <p className="profile-email">
-              {isEditing ? (
-                <input 
-                  type="email" 
-                  value={editForm.email} 
-                  onChange={(e) => setEditForm({...editForm, email: e.target.value})}
-                  style={{ background: '#f5f5f5', border: '1px solid #ddd', color: '#666', padding: '4px 8px', borderRadius: '4px', outline: 'none', marginLeft: '5px', textAlign: 'center' }}
-                />
-              ) : (
-                `📧 ${activeUser.email}`
-              )}
+              📧 {activeUser.email}
             </p>
             <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
               <span className="profile-badge">✅ Active Member</span>
