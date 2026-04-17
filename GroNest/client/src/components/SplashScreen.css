@@ -1,0 +1,205 @@
+/* ===========================
+   SPLASH SCREEN OVERLAY
+   =========================== */
+
+.splash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a3d1f 0%, #145a32 40%, #1e8449 80%, #27ae60 100%);
+  overflow: hidden;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+}
+
+/* ---- Phase states ---- */
+.splash-enter {
+  animation: splashRotateIn 0.75s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.splash-hold {
+  opacity: 1;
+  transform: perspective(1400px) rotateY(0deg);
+}
+.splash-exit {
+  animation: splashRotateOut 0.72s cubic-bezier(0.4,0,0.2,1) forwards;
+  pointer-events: none;
+}
+
+/* Spin in from the left */
+@keyframes splashRotateIn {
+  0%   { opacity: 0; transform: perspective(1400px) rotateY(-90deg) scale(0.9); }
+  60%  { opacity: 1; transform: perspective(1400px) rotateY(8deg) scale(1.01); }
+  100% { opacity: 1; transform: perspective(1400px) rotateY(0deg) scale(1); }
+}
+/* Spin away to the right — reveals the login page underneath */
+@keyframes splashRotateOut {
+  0%   { opacity: 1; transform: perspective(1400px) rotateY(0deg) scale(1); }
+  100% { opacity: 0; transform: perspective(1400px) rotateY(90deg) scale(0.92); }
+}
+
+/* ---- Animated blobs ---- */
+.splash-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.25;
+  animation: blobFloat 5s ease-in-out infinite alternate;
+}
+.blob-1 {
+  width: 400px; height: 400px;
+  background: #2ecc71;
+  top: -100px; left: -120px;
+  animation-delay: 0s;
+}
+.blob-2 {
+  width: 300px; height: 300px;
+  background: #00c9a7;
+  bottom: -80px; right: -80px;
+  animation-delay: 1.5s;
+}
+.blob-3 {
+  width: 250px; height: 250px;
+  background: #f9e03b;
+  bottom: 100px; left: 100px;
+  animation-delay: 0.8s;
+}
+@keyframes blobFloat {
+  0%   { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-30px) scale(1.08); }
+}
+
+/* ---- Floating leaves ---- */
+.splash-leaf {
+  position: absolute;
+  font-size: 22px;
+  opacity: 0;
+  animation: leafFloat 2.5s ease-out forwards;
+}
+.leaf-1 { top: 20%; left: 12%;  animation-delay: 0.2s; }
+.leaf-2 { top: 60%; left: 8%;   animation-delay: 0.4s; }
+.leaf-3 { top: 15%; right: 10%; animation-delay: 0.3s; }
+.leaf-4 { top: 70%; right: 14%; animation-delay: 0.5s; }
+.leaf-5 { top: 40%; left: 5%;   animation-delay: 0.6s; }
+.leaf-6 { top: 80%; left: 40%;  animation-delay: 0.7s; }
+.leaf-7 { top: 10%; left: 50%;  animation-delay: 0.35s; }
+.leaf-8 { top: 85%; right: 30%; animation-delay: 0.55s; }
+
+@keyframes leafFloat {
+  0%   { opacity: 0; transform: translateY(30px) rotate(0deg); }
+  40%  { opacity: 0.8; }
+  100% { opacity: 0.5; transform: translateY(-15px) rotate(20deg); }
+}
+
+/* ---- Core content ---- */
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  z-index: 1;
+}
+
+/* ---- Cart icon + ripple ---- */
+.splash-cart-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
+}
+.splash-cart {
+  font-size: 64px;
+  animation: cartBounce 0.9s cubic-bezier(0.36,0.07,0.19,0.97) 0.1s both;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4));
+}
+@keyframes cartBounce {
+  0%   { transform: scale(0) rotate(-20deg); opacity: 0; }
+  60%  { transform: scale(1.15) rotate(5deg); opacity: 1; }
+  80%  { transform: scale(0.95) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* ripple rings around cart */
+.splash-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  animation: rippleExpand 1.8s ease-out 0.5s infinite;
+}
+.ripple-2 {
+  animation-delay: 1.1s;
+}
+@keyframes rippleExpand {
+  0%   { transform: scale(0.6); opacity: 0.7; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* ---- Title letters ---- */
+.splash-title {
+  font-size: 54px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  display: flex;
+  gap: 2px;
+}
+.splash-title span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: letterRise 0.5s ease forwards;
+}
+.letter-g  { animation-delay: 0.35s; }
+.letter-r  { animation-delay: 0.42s; }
+.letter-o  { animation-delay: 0.49s; color: #f9e03b; }
+.letter-n  { animation-delay: 0.56s; }
+.letter-e  { animation-delay: 0.63s; }
+.letter-s  { animation-delay: 0.70s; }
+.letter-t2 { animation-delay: 0.77s; }
+
+@keyframes letterRise {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Tagline ---- */
+.splash-tagline {
+  font-size: 15px;
+  color: rgba(255,255,255,0.82);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: taglineFade 0.6s ease 1s forwards;
+  font-family: 'Segoe UI', sans-serif;
+}
+@keyframes taglineFade {
+  to { opacity: 1; }
+}
+
+/* ---- Progress bar ---- */
+.splash-loader {
+  width: 180px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  animation: taglineFade 0.4s ease 1.1s forwards;
+}
+.splash-loader-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #f9e03b, #2ecc71, #fff);
+  border-radius: 10px;
+  width: 0%;
+  animation: loadFill 1.4s ease 1.1s forwards;
+}
+@keyframes loadFill {
+  to { width: 100%; }
+}

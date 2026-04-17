@@ -1,0 +1,338 @@
+[
+  {
+    "name": "Fresh Milk 1L",
+    "price": 58,
+    "category": "daily-essentials",
+    "image": "/assets/products/milk.jpg"
+  },
+  {
+    "name": "Whole Wheat Bread",
+    "price": 45,
+    "category": "daily-essentials",
+    "image": "/assets/products/bread.jpg"
+  },
+  {
+    "name": "Milk Packet",
+    "price": 52,
+    "category": "daily-essentials",
+    "image": "/assets/products/milk-packet-cloud-v2.jpg"
+  },
+  {
+    "name": "Paneer Block",
+    "price": 88,
+    "category": "daily-essentials",
+    "image": "/assets/products/paneer.jpg"
+  },
+  {
+    "name": "Classic Oats",
+    "price": 72,
+    "category": "daily-essentials",
+    "image": "/assets/products/oats.jpg"
+  },
+  {
+    "name": "Premium Rice 5kg",
+    "price": 389,
+    "category": "daily-essentials",
+    "image": "/assets/products/rice.jpg"
+  },
+  {
+    "name": "Rice Grains Select",
+    "price": 299,
+    "category": "daily-essentials",
+    "image": "/assets/products/rice-grains-select-cloud.jpg"
+  },
+  {
+    "name": "Breakfast Cereals",
+    "price": 165,
+    "category": "daily-essentials",
+    "image": "/assets/products/cereals.jpg"
+  },
+  {
+    "name": "Bakery Bread",
+    "price": 48,
+    "category": "daily-essentials",
+    "image": "/assets/products/bread.jpg"
+  },
+  {
+    "name": "Oats Breakfast Mix",
+    "price": 118,
+    "category": "daily-essentials",
+    "image": "/assets/products/oats.jpg"
+  },
+  {
+    "name": "Healthy Avocado",
+    "price": 96,
+    "category": "daily-essentials",
+    "image": "/assets/products/avacado.jpg"
+  },
+  {
+    "name": "Daily Beverage Pack",
+    "price": 125,
+    "category": "daily-essentials",
+    "image": "/assets/products/beverages.jpg"
+  },
+  {
+    "name": "Curd Family Pack",
+    "price": 110,
+    "category": "daily-essentials",
+    "image": "/assets/products/curd-family-pack-cloud-v2.jpg"
+  },
+  {
+    "name": "Paneer and Bread Combo",
+    "price": 132,
+    "category": "daily-essentials",
+    "image": "/assets/products/paneer.jpg"
+  },
+  {
+    "name": "Sunflower Oil 1L",
+    "price": 152,
+    "category": "cooking-essentials",
+    "image": "/assets/products/oil.jpg"
+  },
+  {
+    "name": "Onions 1kg",
+    "price": 42,
+    "category": "cooking-essentials",
+    "image": "/assets/products/onions.jpg"
+  },
+  {
+    "name": "Tomatoes 1kg",
+    "price": 38,
+    "category": "cooking-essentials",
+    "image": "/assets/products/tomatoes.jpg"
+  },
+  {
+    "name": "Fresh Tomatoes",
+    "price": 35,
+    "category": "cooking-essentials",
+    "image": "/assets/products/tomatoes.jpg"
+  },
+  {
+    "name": "Potatoes 1kg",
+    "price": 34,
+    "category": "cooking-essentials",
+    "image": "/assets/products/potatoes.jpg"
+  },
+  {
+    "name": "Root Veg Pack",
+    "price": 39,
+    "category": "cooking-essentials",
+    "image": "/assets/products/root-veg-pack-cloud-v2.jpg"
+  },
+  {
+    "name": "Leafy Veg Pack",
+    "price": 44,
+    "category": "cooking-essentials",
+    "image": "/assets/products/leafy-veg-pack-cloud-v2.jpg"
+  },
+  {
+    "name": "Cabbage",
+    "price": 36,
+    "category": "cooking-essentials",
+    "image": "/assets/products/cabbage.jpg"
+  },
+  {
+    "name": "Cauliflower",
+    "price": 42,
+    "category": "cooking-essentials",
+    "image": "/assets/products/cauliflower.jpg"
+  },
+  {
+    "name": "Capsicum",
+    "price": 62,
+    "category": "cooking-essentials",
+    "image": "/assets/products/capsicum.jpg"
+  },
+  {
+    "name": "Spinach",
+    "price": 28,
+    "category": "cooking-essentials",
+    "image": "/assets/products/spinach.jpg"
+  },
+  {
+    "name": "Sweet Potato",
+    "price": 47,
+    "category": "cooking-essentials",
+    "image": "/assets/products/sweetpotato.jpg"
+  },
+  {
+    "name": "Beetroot",
+    "price": 39,
+    "category": "cooking-essentials",
+    "image": "/assets/products/beetroot.jpg.jpeg"
+  },
+  {
+    "name": "Apples",
+    "price": 129,
+    "category": "fresh-produce",
+    "image": "/assets/products/apples-cloud.jpg"
+  },
+  {
+    "name": "Bananas",
+    "price": 42,
+    "category": "fresh-produce",
+    "image": "/assets/products/bananas.jpg"
+  },
+  {
+    "name": "Oranges",
+    "price": 92,
+    "category": "fresh-produce",
+    "image": "/assets/products/orange.jpg"
+  },
+  {
+    "name": "Grapes",
+    "price": 86,
+    "category": "fresh-produce",
+    "image": "/assets/products/grapes.jpg"
+  },
+  {
+    "name": "Mangoes",
+    "price": 149,
+    "category": "fresh-produce",
+    "image": "/assets/products/mangoes.jpg"
+  },
+  {
+    "name": "Watermelon",
+    "price": 68,
+    "category": "fresh-produce",
+    "image": "/assets/products/watermelon.jpg"
+  },
+  {
+    "name": "Blueberry",
+    "price": 99,
+    "category": "fresh-produce",
+    "image": "/assets/products/blueberry.jpg"
+  },
+  {
+    "name": "Strawberry",
+    "price": 112,
+    "category": "fresh-produce",
+    "image": "/assets/products/strawberry.jpg"
+  },
+  {
+    "name": "Raspberry",
+    "price": 118,
+    "category": "fresh-produce",
+    "image": "/assets/products/raspberry.jpg"
+  },
+  {
+    "name": "Cucumber Pack",
+    "price": 48,
+    "category": "fresh-produce",
+    "image": "/assets/products/vegetables.jpg"
+  },
+  {
+    "name": "Fresh Spinach",
+    "price": 28,
+    "category": "fresh-produce",
+    "image": "/assets/products/spinach.jpg"
+  },
+  {
+    "name": "Green Cabbage",
+    "price": 36,
+    "category": "fresh-produce",
+    "image": "/assets/products/cabbage.jpg"
+  },
+  {
+    "name": "Fresh Cauliflower",
+    "price": 42,
+    "category": "fresh-produce",
+    "image": "/assets/products/cauliflower.jpg"
+  },
+  {
+    "name": "Avocado",
+    "price": 96,
+    "category": "fresh-produce",
+    "image": "/assets/products/avacado.jpg"
+  },
+  {
+    "name": "Fresh Beetroot",
+    "price": 39,
+    "category": "fresh-produce",
+    "image": "/assets/products/beetroot.jpg.jpeg"
+  },
+  {
+    "name": "Potato Chips Salted",
+    "price": 35,
+    "category": "snacks-munchies",
+    "image": "/assets/products/potato-chips-salted-cloud.jpg"
+  },
+  {
+    "name": "Pringles",
+    "price": 48,
+    "category": "snacks-munchies",
+    "image": "/assets/products/pringles.jpg"
+  },
+  {
+    "name": "Snacks Pack",
+    "price": 65,
+    "category": "snacks-munchies",
+    "image": "/assets/products/snacks-pack-cloud.jpg"
+  },
+  {
+    "name": "Bakery Bites",
+    "price": 70,
+    "category": "snacks-munchies",
+    "image": "/assets/products/bakery.jpg"
+  },
+  {
+    "name": "Packaged Foods Box",
+    "price": 120,
+    "category": "snacks-munchies",
+    "image": "/assets/products/packaged-foods-box-cloud.jpg"
+  },
+  {
+    "name": "Bread Toast",
+    "price": 39,
+    "category": "snacks-munchies",
+    "image": "/assets/products/bread-toast-cloud.jpg"
+  },
+  {
+    "name": "Cereal Crunch",
+    "price": 88,
+    "category": "snacks-munchies",
+    "image": "/assets/products/cereals.jpg"
+  },
+  {
+    "name": "Oats Cookies",
+    "price": 58,
+    "category": "snacks-munchies",
+    "image": "/assets/products/oats.jpg"
+  },
+  {
+    "name": "Dairy Snack Cup",
+    "price": 49,
+    "category": "snacks-munchies",
+    "image": "/assets/products/dairy-snack-cup-cloud.jpg"
+  },
+  {
+    "name": "Fruit Snack Mix",
+    "price": 72,
+    "category": "snacks-munchies",
+    "image": "/assets/products/fruit-snack-mix-cloud.jpg"
+  },
+  {
+    "name": "Fruit Juice Pack",
+    "price": 39,
+    "category": "snacks-munchies",
+    "image": "/assets/products/fruit-juice-pack-cloud.jpg"
+  },
+  {
+    "name": "Cold Drink Can",
+    "price": 40,
+    "category": "snacks-munchies",
+    "image": "/assets/products/cold-drink-can-cloud.jpg"
+  },
+  {
+    "name": "Cold Coffee Can",
+    "price": 55,
+    "category": "snacks-munchies",
+    "image": "/assets/products/cold-coffee-can-cloud.jpg"
+  },
+  {
+    "name": "Lemon Iced Tea",
+    "price": 46,
+    "category": "snacks-munchies",
+    "image": "/assets/products/beverages.jpg"
+  }
+]
