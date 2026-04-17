@@ -119,7 +119,7 @@ function Profile() {
                   value={editForm.name} 
                   onChange={(e) => setEditForm({...editForm, name: e.target.value})} 
                   autoFocus
-                  style={{ background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.4)', color: '#fff', padding: '4px 8px', borderRadius: '4px', outline: 'none' }}
+                  style={{ background: '#f5f5f5', border: '1px solid #ddd', color: '#333', padding: '4px 8px', borderRadius: '4px', outline: 'none', fontSize: '24px', fontWeight: 'bold', width: '100%', textAlign: 'center' }}
                 />
               ) : (
                 `@${username}`
@@ -131,7 +131,7 @@ function Profile() {
                   type="email" 
                   value={editForm.email} 
                   onChange={(e) => setEditForm({...editForm, email: e.target.value})}
-                  style={{ background: 'rgba(255,255,255,0.2)', border: '1px solid rgba(255,255,255,0.4)', color: '#fff', padding: '4px 8px', borderRadius: '4px', outline: 'none', marginLeft: '5px' }}
+                  style={{ background: '#f5f5f5', border: '1px solid #ddd', color: '#666', padding: '4px 8px', borderRadius: '4px', outline: 'none', marginLeft: '5px', textAlign: 'center' }}
                 />
               ) : (
                 `📧 ${activeUser.email}`
@@ -141,11 +141,11 @@ function Profile() {
               <span className="profile-badge">✅ Active Member</span>
               {isEditing ? (
                 <>
-                  <button onClick={handleSave} style={{ background: '#fff', color: '#27ae60', border: 'none', padding: '4px 12px', borderRadius: '20px', cursor: 'pointer', fontWeight: 'bold' }}>Save</button>
-                  <button onClick={handleEditToggle} style={{ background: 'transparent', color: '#fff', border: '1px solid #fff', padding: '4px 12px', borderRadius: '20px', cursor: 'pointer' }}>Cancel</button>
+                  <button onClick={handleSave} style={{ background: '#27ae60', color: '#fff', border: 'none', padding: '6px 16px', borderRadius: '20px', cursor: 'pointer', fontWeight: 'bold' }}>Save</button>
+                  <button onClick={handleEditToggle} style={{ background: '#f5f5f5', color: '#555', border: '1px solid #ddd', padding: '6px 16px', borderRadius: '20px', cursor: 'pointer', fontWeight: 'bold' }}>Cancel</button>
                 </>
               ) : (
-                <button onClick={handleEditToggle} style={{ background: 'rgba(255,255,255,0.2)', color: '#fff', border: 'none', padding: '4px 12px', borderRadius: '20px', cursor: 'pointer' }}>✏️ Edit</button>
+                <button onClick={handleEditToggle} style={{ background: '#f5f5f5', color: '#333', border: '1px solid #ddd', padding: '6px 16px', borderRadius: '20px', cursor: 'pointer', fontWeight: 'bold' }}>✏️ Edit</button>
               )}
             </div>
           </div>
