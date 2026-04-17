@@ -1,7 +1,6 @@
 export async function fetchProducts() {
   try {
-    const apiUrl = import.meta.env.VITE_API_URL || "";
-    const res = await fetch(`${apiUrl}/api/products`);
+    const res = await fetch("/api/products");
     if (!res.ok) throw new Error('API error');
     const data = await res.json();
     // Normalize image URLs: ensure local filenames become /assets/products/paths
